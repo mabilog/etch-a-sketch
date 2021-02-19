@@ -1,0 +1,1 @@
+let gridSize = alert('What grid size do you want?');

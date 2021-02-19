@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+/* universal reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #fdfffc;
+  background-color: #011627;
+}
+
+header {
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 3em;
+}
+header > p {
+  margin-top: 2em;
+}
