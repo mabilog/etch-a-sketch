@@ -1,5 +1,9 @@
 const gridContainer = document.querySelector('#grid-container');
-const resetButton = document.querySelector('.reset-button');
+const containerSize = document.querySelector('#size-button')
+const resetButton = document.querySelector('#reset-button');
+
+// const gridSize = 16;
+let gridSize = 16;
 
 function setDefaultGrid() {
   setGridSize(16);
@@ -8,6 +12,7 @@ function setDefaultGrid() {
 
 function setGridSize(size) {
   gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  // gridSize = size;
 }
 
 function setFillGrid(size) {
@@ -27,25 +32,27 @@ function changeColor(e) {
 }
 
 function changeSize() {
-  let newSize = prompt('Enter new grid size from 1 to 64');
-  if (newSize !== null) {
-    if (newSize < 1 || newSize > 64 || Number.isNaN(newSize)) {
+  gridSize = prompt('Enter new grid size from 1 to 64');
+  if (gridSize !== null) {
+    if (gridSize < 1 || gridSize > 64 || Number.isNaN(gridSize)) {
       alert("Enter new size from 1 to 64");
       changeSize();
     } else {
-      clearGrid();
-      setGridSize(newSize);
-      setFillGrid(newSize);
+      clearGrid(gridSize);
+
     }
   }
 }
 
-function clearGrid() {
+function clearGrid(size) {
   const gridArray = Array.from(gridContainer.childNodes);
   gridArray.forEach(element => {
     gridContainer.removeChild(element);
   });
+  setGridSize(gridSize);
+  setFillGrid(gridSize);
 }
 
 window.addEventListener('load', setDefaultGrid);
-window.addEventListener('click', changeSize);
+containerSize.addEventListener('click', changeSize);
+resetButton.addEventListener('click', clearGrid);
